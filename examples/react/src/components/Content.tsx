@@ -171,6 +171,36 @@ const Content: React.FC = () => {
     });
   };
 
+  const handleDeploy = async () => {
+    const wallet = await selector.wallet();
+
+    const contractBytes = new Uint8Array(
+      await (
+        await fetch("http://localhost:3000/src/wasm/multisig.wasm")
+      ).arrayBuffer()
+    );
+
+    return wallet
+      .signAndSendTransaction({
+        signerId: accountId!,
+        receiverId: accountId!,
+        actions: [
+          {
+            type: "DeployContract",
+            params: {
+              code: contractBytes,
+            },
+          },
+        ],
+      })
+      .catch((err) => {
+        alert("Failed to add message");
+        console.log("Failed to add message");
+
+        throw err;
+      });
+  };
+
   const handleSubmit = useCallback(
     async (e: SubmitEvent) => {
       e.preventDefault();
@@ -236,6 +266,7 @@ const Content: React.FC = () => {
         account={account}
         onSubmit={(e) => handleSubmit(e as unknown as SubmitEvent)}
       />
+      <button onClick={handleDeploy}>Deploy contract</button>
       <Messages messages={messages} />
     </Fragment>
   );
