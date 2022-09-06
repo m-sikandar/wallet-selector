@@ -41,6 +41,9 @@ export const setupModal = (
       hide: () => {
         render(false);
       },
+      updateContract: (accountId) => {
+        options.contractId = accountId;
+      },
     };
   }
 

@@ -10,4 +10,5 @@ export interface ModalOptions {
 export interface WalletSelectorModal {
   show(): void;
   hide(): void;
+  updateContract(accountId: string): void;
 }
