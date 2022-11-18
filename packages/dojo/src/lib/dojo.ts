@@ -219,7 +219,7 @@ export function setupDojo({
         description: "Upcoming cutting-edge crypto wallet.",
         iconUrl,
         // Will replace we open beta with stable version
-        downloadUrl: "https://www.nightly.app",
+        downloadUrl: "https://kaizo-web-fe-dev.devtomaster.com",
         deprecated,
         available: installed,
       },

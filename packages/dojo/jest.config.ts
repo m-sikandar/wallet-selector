@@ -1,6 +1,6 @@
 /* eslint-disable */
 export default {
-  displayName: "nightly",
+  displayName: "dojo",
   preset: "../../jest.preset.js",
   globals: {
     "ts-jest": {
